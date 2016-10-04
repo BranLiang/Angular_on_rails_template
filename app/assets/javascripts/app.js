@@ -1,8 +1,13 @@
 var MyApp = angular.module('MyApp', ['ui.router', 'restangular']);
 
 MyApp.config(
-	["$httpProvider", '$stateProvider', '$urlRouterProvider',
-		function ($httpProvider, $stateProvider, $urlRouterProvider) {
+	["$httpProvider", '$stateProvider', '$urlRouterProvider', 'RestangularProvider',
+		function ($httpProvider, $stateProvider, $urlRouterProvider, RestangularProvider) {
+			// restangular configuration
+			RestangularProvider.setBaseUrl('/api/v1');
+			RestangularProvider.setRequestSuffix('.json');
+
+			// router configuration
 			$urlRouterProvider.otherwise('');
 
 			$stateProvider
